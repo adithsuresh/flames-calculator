@@ -1,65 +1,104 @@
 <html>
+
 <head>
-	<title>FLAMES Calculator</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="flames.js"></script>
-<style>
-.bordered {
-	border:20px ridge gray;
-	padding:50 50;
+    <title>TRICKZAS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="/images/favicon2_trickzas.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="./flames.js"></script>
+	<noscript>
+        <META HTTP-EQUIV="Refresh" CONTENT="0;URL=/jsDisabledErrorPage.html">
+    </noscript>
+	<style>
+	.bordered {
+		border:20px ridge gray;
+		padding:50 50;
+		border-radius:5px;
+	}
+
+	#flamescalc {
+		background:url("https://images.all-free-download.com/images/graphiclarge/valentine_day_love_backgrounds_vector_522046.jpg") repeat top center fixed;
+		margin-top:10px;
+		background-color: crimson;
+	}
+
+	#p1{
+	color:ivory;
+	font-weight:bold;
+	font-size:20px;
+	}
+
+	#result{
+	font-size:52px;
+	font-weight:bold;
+	color:white;
+	background:url("https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_960_720.jpg");
+	border:15px groove white;
 	border-radius:5px;
-}
+	display:none;
+	}
 
-#flamescalc {
-	background:url("./bg1.jpg") repeat top center fixed;
-	margin-top:20px;
-	background-color: crimson;
-}
+	hr {
+		border: none;
+		height: 3px;
+		color: #eee;
+		background-color: #eee;
+	}
+	#btnFlames,#btnReset {
+	width:90px!important;
+	text-align:center;
+	border-radius:25px;
+	}
 
-#p1{
-color:ivory;
-font-weight:bold;
-font-size:20px;
-}
-
-#result{
-font-size:52px;
-font-weight:bold;
-color:white;
-background:url("./bg2.jpg");
-border:15px groove white;
-border-radius:5px;
-display:none;
-}
-
-hr {
-    border: none;
-    height: 3px;
-    color: #eee;
-    background-color: #eee;
-}
-.btn {
-width:80px!important;
-}
-
-</style>
+	</style>
 </head>
 
 <body>
-
-<div class=" bordered container col-md-4 col-md-offset-4" id="flamescalc">	
-	<p id="p1">Type two peoples names to calculate the FLAMES....</p><br/>	
-	<form onsubmit="return loveCalc();" action="" method="POST">
-	<input type="text" class="form-control" id="name1" name="yname" placeholder="your name" onkeypress="return ((event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode == 32));" required/><br/>
-	<input type="text" class="form-control" id="name2" name="cname" placeholder="your crush name" required/><br/>
-	<center><input class="btn btn-danger" type="submit" value="FLAMES" />&emsp;<input class="btn btn-light" type="reset" onclick="document.getElementById('result').style.display='none';" value="Reset" /></center>
-	</form>
-	<br/>
-	<div id="result" class="text-center"></div>
-</div>
-
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <a id="pagetitle" class="navbar-brand" href="/index.html">TRICKZAS</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav bg-dark mr-auto">
+                <li class="nav-item"><a class="fa fa-home nav-link btn-dark" href="/index.html">&nbsp; Home </a></li>
+                <li class="nav-item dropdown"><a class="active fa fa-snowflake-o nav-link dropdown-toggle btn-dark" href="#" id="navbardrop" data-toggle="dropdown">&nbsp; Tools</a>
+                    <ul class="dropdown-menu">
+                        <a class="dropdown-item" href="/pages/ip-details.html">IP Details</a>
+                        <a class="dropdown-item" href="/pages/pnr-status.html">PNR Status</a>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="fa fa-cube nav-link btn-dark" href="https://trickzas.blogspot.com/">&nbsp; Blog</a></li>
+                <li class="nav-item"><a class="fa fa-ioxhost nav-link btn-dark" href="/pages/about.html">&nbsp; About</a></li>
+                <li class="nav-item"><a class="fa fa-envelope-o nav-link btn-dark" href="/pages/contact.html">&nbsp; Contact</a></li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                <button class="btn btn-outline-info my-2 my-sm-0" type="button">Search</button>
+            </form>
+        </div>
+    </nav>
+    <div class="content">
+		<div class=" bordered container" id="flamescalc">	
+		<p id="p1">Type two peoples names to calculate FLAMES....</p><br/>	
+		<form onsubmit="return loveCalc();" action="" method="POST">
+			<input type="text" class="form-control" id="name1" name="yname" placeholder="your name" onkeypress="return ((event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode == 32));" required/><br/>
+			<input type="text" class="form-control" id="name2" name="cname" placeholder="your crush name" required/><br/>
+			<center>
+			&emsp;<input class="btn btn-danger" type="submit" value="FLAMES" id="btnFlames"/>&emsp;
+			<input class="btn btn-light" type="reset" onclick="document.getElementById('result').style.display='none';" value="Reset" id="btnReset"/>
+			</center>
+		</form>
+		<br/>
+		<div id="result" class="text-center"></div>
+		</div>
+    </div>
+    <footer>
+        <div>Copyright © 2018 - <a href="/index.html">TRICKZAS</a></div>
+    </footer>
 </body>
 
 </html>
