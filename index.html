@@ -8,7 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="./flames.js"></script>
 	<noscript>
@@ -49,16 +49,20 @@
 		color: #eee;
 		background-color: #eee;
 	}
+	
 	#btnFlames,#btnReset {
 	width:90px!important;
-	text-align:center!important;
+	text-align:center;
 	border-radius:25px;
 	}
-
+	
+	#name1,#name2 {
+		text-align:center;
+	}
 	</style>
 </head>
 
-<body>
+<body onload="urlQr();">
     <nav class="navbar navbar-expand-md bg-dark navbar-dark">
         <a id="pagetitle" class="navbar-brand" href="/index.html">TRICKZAS</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar"><span class="navbar-toggler-icon"></span></button>
@@ -83,18 +87,15 @@
     </nav>
     <div class="content">
 		<div class=" bordered container" id="flamescalc">	
-		<p id="p1">Type two peoples names to calculate FLAMES....</p><br/>	
-		<form onsubmit="return loveCalc();" action="" method="POST">
-			<input type="text" class="form-control" id="name1" name="yname" placeholder="your name" onkeypress="return ((event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode == 32));" required/><br/>
-			<input type="text" class="form-control" id="name2" name="cname" placeholder="your crush name" required/><br/>
-			<center>
-			&emsp;<input class="btn btn-danger" type="submit" value="FLAMES" id="btnFlames"/>&emsp;
-			<input class="btn btn-light" type="reset" onclick="document.getElementById('result').style.display='none';" value="Reset" id="btnReset"/>
-			</center>
-		</form>
-		<br/>
-		<div id="result" class="text-center"></div>
-		</div>
+	<p id="p1">Type two peoples names to calculate the FLAMES....</p><br/>	
+	<form onsubmit="return loveCalc();">
+	<input type="text" class="form-control" id="name1" name="yname" placeholder="your name" onkeypress="return ((event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode == 32));" onkeyup="updateURL()" required/><br/>
+	<input type="text" class="form-control" id="name2" name="cname" placeholder="your crush name" onkeypress="return ((event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode == 32));" onkeyup="updateURL()" required/><br/>
+	<center><input class="btn btn-danger" type="submit" value="FLAMES" />&emsp;<input class="btn btn-light" type="reset" onclick="document.getElementById('result').style.display='none';" value="Reset" /></center>
+	</form>
+	<br/>
+	<div id="result" class="text-center"></div>
+	</div>
     </div>
     <footer>
         <div>Copyright © 2018 - <a href="/index.html">TRICKZAS</a></div>
