@@ -1,8 +1,9 @@
 function loveCalc(){
-var str1 = document.getElementById("name1").value.split('');
-var str2 = document.getElementById("name2").value.split('');
-var finalstr1 = $(str1).not(str2).get().join('').replace(/\s/g,'');
-var finalstr2 = $(str2).not(str1).get().join('').replace(/\s/g,'');
+var str1,str2,finalstr1,finalstr2;
+str1 = document.getElementById("name1").value.split('');
+str2 = document.getElementById("name2").value.split('');
+finalstr1 = $(str1).not(str2).get().join('').cleanup();;
+finalstr2 = $(str2).not(str1).get().join('').cleanup();;
 var strlen = finalstr1.length + finalstr2.length; 
 var arr = new Array("F", "L", "A", "M", "E", "S");
 var stp=1;
@@ -41,4 +42,39 @@ switch (arr[i]) {
 }
 document.getElementById("result").style.display="block";
 return false;
+}
+
+function getParam( name ) {
+name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+ var regexS = "[\\?&]"+name+"=([^&#]*)";
+ var regex = new RegExp( regexS );
+ var results = regex.exec( window.location.href );
+ if( results == null )
+  return "";
+else
+ return results[1];
+}
+
+String.prototype.cleanup = function() {
+   return this.toLowerCase().replace(/[^a-zA-Z]+/g, "");
+}
+
+function urlQr() {
+var n1 = getParam( 'name1' );
+var n2 = getParam( 'name2' );
+document.getElementById("name1").value=n1.cleanup();
+document.getElementById("name2").value=n2.cleanup();
+updateURL();
+	if (document.getElementById('name1').value != "" && document.getElementById('name2').value != "") {
+		loveCalc();
+	}
+}
+
+function updateURL() {
+	var q1 = document.getElementById("name1").value.cleanup();
+	var q2 = document.getElementById("name2").value.cleanup();
+      if (history.pushState) {
+          var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?name1=' + q1 + '&name2=' + q2;
+          window.history.pushState({path:newurl},'',newurl);
+      }  
 }
