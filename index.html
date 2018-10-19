@@ -21,6 +21,10 @@
 	   font-family: 'Poppins', sans-serif;
 	}
 	
+	h5,ul li a:not(.fa) {
+		font-family: 'Poppins', sans-serif!important;
+	}
+	
 	.bordered {
 		border:15px ridge #ddd;
 		padding:50 50;
@@ -119,7 +123,9 @@
         </div>
     </nav>
     <div class="content">
-		<div class=" bordered container" id="flamescalc">	
+	<h5>Do you want to know what type of relationship <font color="crimson">(friendship, love, affection, marriage, enmity, sisterhood)</font> you are going to have with your dream partner?</h5>
+	<br/>
+	<div class=" bordered container" id="flamescalc">	
 	<p id="p1">Type two names to calculate FLAMES !</p><br/>	
 	<form onsubmit="return loveCalc();">
 	<center>
@@ -134,6 +140,8 @@
 	<br/>
 	<div id="result" class="text-center"></div>
 	</div>
+	<br/>
+	<h5><b style="color:crimson;">Note:</b> FLAMES is a game intended for fun, whatever the FLAMES relationship result is, it doesn't mean that it may happen in real life... =)</h5>
     </div>
     <footer>
         <div>Copyright <span class="fa fa-copyright"></span> 2018 - <a href="/index.html">TRICKZAS</a></div>
