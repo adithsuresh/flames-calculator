@@ -1,1 +1,2 @@
-# lc
+# flames-calculator
+Find out what type of relationship (friendship, love, affection, marriage, enmity, sisterhood) you are going to have with your dream partner...
