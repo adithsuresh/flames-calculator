@@ -1,8 +1,20 @@
-<html>
+<html lang="en">
   <head>
-    <title>TRICKZAS</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <meta http-equiv="content-type" content="text/html" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Love Calculator - FLAMES Game</title>
     <link rel="icon" href="/images/logo.png" />
+    <meta
+      name="keywords"
+      content="love calculator, love flames, flames test, flames calculator, love compatibility, love test, love relationship, love test game"
+    />
+    <meta
+      name="description"
+      content="An online Love Calculator to test your relationship compatibility. Test the status of your relationship with your crush/partner based on the FLAMES game."
+    />
+    <meta name="robots" />
     <link rel="stylesheet" type="text/css" href="./css/style.css" />
     <link rel="stylesheet" type="text/css" href="./css/normalize.css" />
     <script src="./js/app.js"></script>
@@ -23,20 +35,24 @@
             type="text"
             class="form_control"
             id="name1"
-            name="name1"
+            name="yname"
             placeholder="your name"
-            onkeypress="return ((event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode == 32));"
+            onkeypress="return validateName(event);"
             onkeyup="updateURL();onEnter(event);"
+            pattern="[a-zA-Z ]*$"
+            title="Name"
             required
           />
           <input
             type="text"
             class="form_control"
             id="name2"
-            name="name2"
+            name="pname"
             placeholder="your partner/crush name"
-            onkeypress="return ((event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode == 32));"
+            onkeypress="return validateName(event);"
             onkeyup="updateURL();onEnter(event);"
+            pattern="[a-zA-Z ]*$"
+            title="Name"
             required
           />
           <div class="button_container">
