@@ -1,78 +1,84 @@
 function loveCalc() {
   let name1 = document.querySelector("#name1").value.alphabetsOnly().toUpperCase();
   let name2 = document.querySelector("#name2").value.alphabetsOnly().toUpperCase();
-  if (name1 !== "" && name2 !== "") {
-    for (let i = 0; i < name1.length; i++) {
-      for (let j = 0; j < name2.length; j++) {
-        if (name1[i] == name2[j]) {
-          let a1 = name1.substring(0, i);
-          let a2 = name1.substring(i + 1, name1.length);
-          name1 = a1 + a2;
-          i = -1;
-          let b1 = name2.substring(0, j);
-          let b2 = name2.substring(j + 1, name2.length);
-          name2 = b1 + b2;
-          j = -1;
-          break;
+  if (name1 !== "") {
+    if (name2 !== "") {
+      for (let i = 0; i < name1.length; i++) {
+        for (let j = 0; j < name2.length; j++) {
+          if (name1[i] == name2[j]) {
+            let a1 = name1.substring(0, i);
+            let a2 = name1.substring(i + 1, name1.length);
+            name1 = a1 + a2;
+            i = -1;
+            let b1 = name2.substring(0, j);
+            let b2 = name2.substring(j + 1, name2.length);
+            name2 = b1 + b2;
+            j = -1;
+            break;
+          }
         }
       }
-    }
-    let strikedName = name1 + name2;
-    let snLength = strikedName.length;
-    let flArr = new Array("F", "L", "A", "M", "E", "S");
-    let stp = 1;
-    for (let x = 6; x > 1; x--) {
-      let g = (snLength % x) + stp - 1;
-      if (g > x) {
-        g = g % x;
+      let strikedName = name1 + name2;
+      let snLength = strikedName.length;
+      let flArr = new Array("F", "L", "A", "M", "E", "S");
+      let stp = 1;
+      for (let x = 6; x > 1; x--) {
+        let g = (snLength % x) + stp - 1;
+        if (g > x) {
+          g = g % x;
+        }
+        if (g == 0) {
+          g = flArr.length;
+        }
+        flArr.splice(g - 1, 1);
+        stp = g;
       }
-      if (g == 0) {
-        g = flArr.length;
+      switch (flArr[0]) {
+        case "F":
+          document.querySelector("#flames_result").style.backgroundImage = `url("./img/friends-bg.jpg")`;
+          document.querySelector("#flames_result_img").setAttribute("src", "./img/friends.png");
+          document.querySelector("#flames_result_text").innerHTML = "FRIENDSHIP";
+          break;
+        case "L":
+          document.querySelector("#flames_result").style.backgroundImage = `url("./img/lover-bg.jpg")`;
+          document.querySelector("#flames_result_img").setAttribute("src", "./img/lover.png");
+          document.querySelector("#flames_result_text").innerHTML = "LOVE";
+          break;
+        case "A":
+          document.querySelector("#flames_result").style.backgroundImage = `url("./img/affection-bg.jpg")`;
+          document.querySelector("#flames_result_img").setAttribute("src", "./img/affection.png");
+          document.querySelector("#flames_result_text").innerHTML = "AFFECTION";
+          break;
+        case "M":
+          document.querySelector("#flames_result").style.backgroundImage = `url("./img/marriage-bg.jpg")`;
+          document.querySelector("#flames_result_img").setAttribute("src", "./img/marriage.png");
+          document.querySelector("#flames_result_text").innerHTML = "MARRIAGE";
+          break;
+        case "E":
+          document.querySelector("#flames_result").style.backgroundImage = `url("./img/enemy-bg.jpg")`;
+          document.querySelector("#flames_result_img").setAttribute("src", "./img/enemy.png");
+          document.querySelector("#flames_result_text").innerHTML = "ENMITY";
+          break;
+        case "S":
+          document.querySelector("#flames_result").style.backgroundImage = `url("./img/sister-bg.jpg")`;
+          document.querySelector("#flames_result_img").setAttribute("src", "./img/sister.png");
+          document.querySelector("#flames_result_text").innerHTML = "SISTERHOOD";
+          break;
+        default:
+          document.querySelector("#flames_result").style.background = `#333`;
+          document.querySelector("#flames_result_text").innerHTML = "UNKNOWN";
+          break;
       }
-      flArr.splice(g - 1, 1);
-      stp = g;
+      document.querySelector("#flames_result").style.display = "flex";
+      document.activeElement.blur();
+    } else {
+      document.querySelector("#name2").value = "";
+      setTimeout(() => {
+        document.querySelector("#btnFlames").click();
+      }, 250);
     }
-    switch (flArr[0]) {
-      case "F":
-        document.querySelector("#flames_result").style.backgroundImage = `url("./img/friends-bg.jpg")`;
-        document.querySelector("#flames_result_img").setAttribute("src", "./img/friends.png");
-        document.querySelector("#flames_result_text").innerHTML = "FRIENDSHIP";
-        break;
-      case "L":
-        document.querySelector("#flames_result").style.backgroundImage = `url("./img/lover-bg.jpg")`;
-        document.querySelector("#flames_result_img").setAttribute("src", "./img/lover.png");
-        document.querySelector("#flames_result_text").innerHTML = "LOVE";
-        break;
-      case "A":
-        document.querySelector("#flames_result").style.backgroundImage = `url("./img/affection-bg.jpg")`;
-        document.querySelector("#flames_result_img").setAttribute("src", "./img/affection.png");
-        document.querySelector("#flames_result_text").innerHTML = "AFFECTION";
-        break;
-      case "M":
-        document.querySelector("#flames_result").style.backgroundImage = `url("./img/marriage-bg.jpg")`;
-        document.querySelector("#flames_result_img").setAttribute("src", "./img/marriage.png");
-        document.querySelector("#flames_result_text").innerHTML = "MARRIAGE";
-        break;
-      case "E":
-        document.querySelector("#flames_result").style.backgroundImage = `url("./img/enemy-bg.jpg")`;
-        document.querySelector("#flames_result_img").setAttribute("src", "./img/enemy.png");
-        document.querySelector("#flames_result_text").innerHTML = "ENMITY";
-        break;
-      case "S":
-        document.querySelector("#flames_result").style.backgroundImage = `url("./img/sister-bg.jpg")`;
-        document.querySelector("#flames_result_img").setAttribute("src", "./img/sister.png");
-        document.querySelector("#flames_result_text").innerHTML = "SISTERHOOD";
-        break;
-      default:
-        document.querySelector("#flames_result").style.background = `#333`;
-        document.querySelector("#flames_result_text").innerHTML = "UNKNOWN";
-        break;
-    }
-    document.querySelector("#flames_result").style.display = "flex";
-    document.activeElement.blur();
   } else {
     document.querySelector("#name1").value = "";
-    document.querySelector("#name2").value = "";
     setTimeout(() => {
       document.querySelector("#btnFlames").click();
     }, 250);
