@@ -75,6 +75,15 @@ body {
   align-items: center;
   justify-content: center;
 }
+.title {
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.6rem;
+  color: #005849;
+}
+.text-center {
+  text-align: center;
+}
 .form_control {
   display: block;
   height: 42px;
